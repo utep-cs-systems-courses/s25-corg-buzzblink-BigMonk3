@@ -23,5 +23,5 @@ clean: $^
 buzzer.o: buzzer.c buzzer.h
 switches.o: switches.c switches.h
 bugle.o: bugle.c bugle.h
-metronome.o: metronome.c metronome.h
+metronome.o: metronome.s metronome.h
 main.o: main.c

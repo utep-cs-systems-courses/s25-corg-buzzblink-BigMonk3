@@ -4,7 +4,6 @@
 #include "buzzer.h"
 #include "switches.h"
 #include "metronome.h"
-#include "bugle.h"
 
 int main() {
   configureClocks();
@@ -18,3 +17,21 @@ int main() {
   
   or_sr(0x18); //cpu off GIE set
 }
+
+int secondCount;
+
+void
+__interrupt_vec(WDT_VECTOR) WDT()	/* 250 interrupts/sec */
+{
+  secondCount++;
+  
+  if (secondCount % 10 == 0) {
+    P1OUT &= ~LEDS;
+  }
+  
+  if (secondCount >= tempo) { 
+    secondCount = 0;
+    metronome_click();
+  }
+}
+
