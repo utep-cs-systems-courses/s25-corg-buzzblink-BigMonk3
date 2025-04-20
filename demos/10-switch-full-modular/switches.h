@@ -1,4 +1,4 @@
-#ifndef switches_included
+#witches_included
 #define switches_included
 
 #define SW1 BIT3		/* switch1 is p1.3 */

@@ -11,7 +11,7 @@ AS              = msp430-elf-as
 all: bugle.elf 
 
 #additional rules for files
-bugle.elf: ${COMMON_OBJECTS} buzzer.o switches.o bugle.o ../lib/libTimer.a
+bugle.elf: ${COMMON_OBJECTS} main.o buzzer.o switches.o bugle.o metronome.o ../lib/libTimer.a
 	${CC} ${CFLAGS} -o $@ $^
 
 load: bugle.elf
@@ -22,4 +22,6 @@ clean: $^
 
 buzzer.o: buzzer.c buzzer.h
 switches.o: switches.c switches.h
-bugle.o: bugle.c
+bugle.o: bugle.c bugle.h
+metronome.o: metronome.c metronome.h
+main.o: main.c
